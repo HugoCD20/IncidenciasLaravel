@@ -4,6 +4,7 @@ use App\Http\Controllers\AgragarIncidencia;
 use App\Http\Controllers\asignacion;
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\IncidenciasController;
+use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -38,5 +39,8 @@ Route::resource('asignar',asignacion::class)
 
 Route::resource('Asignacion', AsignacionController::class)
     ->only(['store']);
-    
+
+Route::resource('Tareas',mostrarTareas::class)
+    ->only(['show']);
+
 require __DIR__.'/auth.php';

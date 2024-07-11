@@ -27,8 +27,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(route('Incidencia.index', absolute: false));
+        $user=Auth::user();
+        if($user->role!="Tecnico"){
+            return redirect()->intended(route('Incidencia.index', [], false));
+        } else {
+            return redirect()->route('Tareas.show',$user->id);
+        }
     }
 
     /**
