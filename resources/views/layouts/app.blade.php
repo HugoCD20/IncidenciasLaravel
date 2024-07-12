@@ -7,6 +7,16 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
         <style>
+            .centrar{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .boton{
+                border: 1px solid white;
+                width: 80%;
+            }
             table {
             border-collapse: collapse;
             color: white;

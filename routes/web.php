@@ -6,6 +6,8 @@ use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\tareascontroller;
+use App\Http\Controllers\verTarea;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 use Pest\Plugins\Only;
@@ -43,4 +45,12 @@ Route::resource('Asignacion', AsignacionController::class)
 Route::resource('Tareas',mostrarTareas::class)
     ->only(['show']);
 
+Route::resource('Tarea',verTarea::class)
+    ->only(['show']);
+
+Route::resource('Solucion',tareascontroller::class)
+    ->only(['show','store']);
+
+
+    
 require __DIR__.'/auth.php';

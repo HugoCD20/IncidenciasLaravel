@@ -1,5 +1,33 @@
 <x-app-layout>
-    @foreach ($tareas as $tarea)
-        <span>{{$tarea->titulo}}</span>    
-    @endforeach
+<div class="py-12"></div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y" style="margin-left:10%; margin-right:10%;background-color: rgb(31 41 55 / var(--tw-bg-opacity));color:white; display: flex; flex-direction:column; align-items:center;">
+                        <h1 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal;">Tareas:</h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID-Incidencia</th>
+                                    <th>Titulo</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tareas as $tarea)
+                                <tr>
+                                    <td>{{$tarea->id}}</td>
+                                    <td>{{$tarea->titulo}}</td>
+                                    <td><a class="centrar" href="{{route('Tarea.show',$tarea->id)}}"><button class="boton">Ver</button></a></td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>                          
+
 </x-app-layout>
