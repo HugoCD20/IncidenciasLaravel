@@ -53,4 +53,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Asignacion::class);
     }
+    public function Tarea(): HasMany{
+        return $this->hasMany(Tarea::class);
+    }
 }

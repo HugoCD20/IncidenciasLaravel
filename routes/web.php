@@ -6,6 +6,7 @@ use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TareaController;
 use App\Http\Controllers\tareascontroller;
 use App\Http\Controllers\verTarea;
 use GuzzleHttp\Middleware;
@@ -49,7 +50,10 @@ Route::resource('Tarea',verTarea::class)
     ->only(['show']);
 
 Route::resource('Solucion',tareascontroller::class)
-    ->only(['show','store']);
+    ->only(['show']);
+
+Route::resource('Soluciones',TareaController::class)
+    ->only(['store']);
 
 
     

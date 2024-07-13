@@ -1,5 +1,5 @@
 <x-guest-layout>
-<form method="POST" action="{{ route('Solucion.store') }}">
+<form method="POST" action="{{ route('Soluciones.store') }}">
         @csrf
 
         <!-- titulo -->

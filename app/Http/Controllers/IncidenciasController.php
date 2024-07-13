@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\Incidencias;
+use App\Models\Tarea;
 use Illuminate\Http\Request;
 
 class IncidenciasController extends Controller
@@ -40,8 +41,21 @@ class IncidenciasController extends Controller
     {
         // Encuentra la incidencia por su ID
         $incidencia = Incidencias::find($id);
-        return view('mostrar', compact('incidencia'));
+    
+        // Asegúrate de que la incidencia fue encontrada
+        if (!$incidencia) {
+            // Maneja el caso donde la incidencia no se encuentra
+            return redirect()->back()->with('error', 'Incidencia no encontrada.');
+        }
+    
+        $tareas = Tarea::join('users', 'tareas.user_id', '=', 'users.id')
+                       ->where('tareas.incidencia_id', $incidencia->id)
+                       ->select('tareas.*', 'users.name as usuario_nombre')
+                       ->get();
+    
+        return view('mostrar', compact('incidencia', 'tareas'));
     }
+    
 
     /**
      * Show the form for editing the specified resource.

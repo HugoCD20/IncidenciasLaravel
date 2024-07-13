@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Incidencias extends Model
 {
@@ -22,6 +23,9 @@ class Incidencias extends Model
     public function asignacion()
     {
         return $this->hasMany(Asignacion::class);
+    }
+    public function Tarea():HasMany{
+        return $this->hasMany(Tarea::class);
     }
     
 }

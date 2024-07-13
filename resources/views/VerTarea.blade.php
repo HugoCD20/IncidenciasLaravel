@@ -22,6 +22,29 @@
                     <p>{{nl2br($incidencia->descripcion)}}</p>
                 </div>
                 <a href="{{route('Solucion.show',$incidencia->id)}}" class="centrar" style="width:25%; margin-top:15px;"><button class="boton">Añadir Solucion</button></a>
+                @if (isset($tareas) && $tareas->isEmpty())
+                    <p style="margin-top:30px;">No hay soluciones</p>
+                @elseif (isset($tareas))
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Titulo:</th>
+                                <th>Descripcion:</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($tareas as $tarea)
+                            <tr>
+                                <td style="max-width: 200px;">{{ strtoupper($tarea->titulo) }}</td>
+                                <td style="max-width: 400px;">{{ $tarea->descripcion }}</td>
+                                <td><a href="" class="centrar"><button class="boton">Finalizar</button></a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
             </div>
         </div>
     </div>
