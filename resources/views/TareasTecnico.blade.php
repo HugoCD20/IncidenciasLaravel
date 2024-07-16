@@ -5,6 +5,9 @@
             <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y" style="margin-left:10%; margin-right:10%;background-color: rgb(31 41 55 / var(--tw-bg-opacity));color:white; display: flex; flex-direction:column; align-items:center;">
                         <h1 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal;">Tareas:</h1>
+                        @if (isset($tareas) && empty($tareas))
+                            <p style="margin-top:60px;">No hay tareas asignadas</p>
+                        @else
                         <table>
                             <thead>
                                 <tr>
@@ -23,6 +26,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        @endif
                     </div>
                 </div>
             </div>  

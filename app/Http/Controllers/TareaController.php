@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tarea;
+use App\Models\Incidencias;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -42,6 +43,11 @@ class TareaController extends Controller
             'estado'=>'iniciado',
         ];
         Tarea::create($data);
+        $incidencia = Incidencias::findOrFail($request->id);
+        $incidencia->update([
+            'etapa' => 'Atencion', // Cambia 'nueva_etapa' al valor deseado
+            // Puedes actualizar otros campos según sea necesario
+        ]);
         return redirect(route('Tarea.show',$request->id));
     }
 

@@ -10,6 +10,9 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                         <div class="mt-6 bg-white shadow-sm rounded-lg divide-y" style="margin-left:10%; margin-right:10%;background-color: rgb(31 41 55 / var(--tw-bg-opacity));color:white; border:1px solid white;">
+                        @if (isset($Incidencia) && $Incidencia->isEmpty())
+                        <p style="margin-top:30px; margin-bottom:30px;" class="centrar">No hay Incidencias</p>
+                        @else
                         @foreach ($Incidencia as $incidencia)
                                 <div class="p-6 flex space-x-2" style="border: 1px solid white;border-style: none;border-bottom-color: white;border-bottom-style: dashed;">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -52,7 +55,7 @@
                                         </div>
                                     </div>
                                     @endforeach
-
+                                    @endif
                         </div>
                 </div>
             </div>

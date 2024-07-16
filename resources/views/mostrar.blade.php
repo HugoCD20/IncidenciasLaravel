@@ -21,7 +21,19 @@
                     <span style="border: 1px solid white;border-style: none;border-bottom-color: white;border-bottom-style: dotted; width:100%;">Descripción:</span>
                     <p>{{nl2br($incidencia->descripcion)}}</p>
                 </div>
-                <h1 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal; margin-top:50px;">Mensajes:</h1>
+                <h1 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal; margin-top:50px;">Reporte:</h1>
+                <img src="@if ($incidencia->etapa=="Sin Asignar")
+                            {{asset('storage/grafo/paso1.png')}}
+                        @elseif($incidencia->etapa=="Asignado")
+                            {{asset('storage/grafo/paso2.png')}}
+                        @elseif($incidencia->etapa=="Atencion")
+                            {{asset('storage/grafo/paso3.png')}}
+                        @elseif($incidencia->etapa=="Pruebas")
+                            {{asset('storage/grafo/paso4.png')}}
+                        @elseif($incidencia->etapa=="Finalizado")
+                            {{asset('storage/grafo/finalizado.png')}}
+                        @endif
+                " alt="">
                 @foreach ($tareas as $tarea)
                 <div class="p-6 flex space-x-2" style="border: 1px solid white;border-style: none;border-bottom-color: white;border-bottom-style: dashed;width:100%;">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
