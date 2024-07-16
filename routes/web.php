@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgragarIncidencia;
 use App\Http\Controllers\asignacion;
 use App\Http\Controllers\AsignacionController;
+use App\Http\Controllers\FinalizarController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
@@ -55,6 +56,8 @@ Route::resource('Solucion',tareascontroller::class)
 Route::resource('Soluciones',TareaController::class)
     ->only(['store']);
 
+Route::resource('Finalizar',FinalizarController::class)
+->only(['store']);
 
     
 require __DIR__.'/auth.php';

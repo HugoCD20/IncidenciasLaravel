@@ -38,7 +38,14 @@
                             <tr>
                                 <td style="max-width: 200px;">{{ strtoupper($tarea->titulo) }}</td>
                                 <td style="max-width: 400px;">{{ $tarea->descripcion }}</td>
-                                <td><a href="" class="centrar"><button class="boton">Finalizar</button></a></td>
+                                <td>
+                                    <form id="finalizar-form" action="{{route('Finalizar.store')}}" method="POST" class="centrar">
+                                    @csrf
+                                        <input type="hidden" name="id" id="id" value="{{$tarea->id}}">
+                                        <input type="hidden" name="id_incidencia" id="id_incidencia" value="{{$incidencia->id}}">
+                                        <button type="button" onclick="confirmDeletion()" class="boton">Finalizar</button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
