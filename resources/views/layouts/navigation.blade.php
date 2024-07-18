@@ -12,17 +12,22 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    @if(Auth::user()->role != 'Tecnico')
-                    <x-nav-link :href="route('Incidencia.index')" :active="request()->routeIs('dashboard')">
-                        {{ __('Incidencias') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('incidencia')" :active="request()->routeIs('incidencia')">
-                        {{ __('Agregar incidencia') }}
-                    </x-nav-link>
+                    @if (isset((Auth::user()->role)))
+                        @if(Auth::user()->role != 'Tecnico')
+                        <x-nav-link :href="route('Incidencia.index')" :active="request()->routeIs('dashboard')">
+                            {{ __('Incidencias') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('incidencia')" :active="request()->routeIs('incidencia')">
+                            {{ __('Agregar incidencia') }}
+                        </x-nav-link>
+                        @else
+                        <x-nav-link href="{{route('Tareas.show',Auth::user()->id)}}" :active="request()->routeIs('Tareas.show')">
+                            {{ __('Tareas') }}
+                        </x-nav-link>
+                        @endif
+
                     @else
-                    <x-nav-link href="{{route('Tareas.show',Auth::user()->id)}}" :active="request()->routeIs('Tareas.show')">
-                        {{ __('Tareas') }}
-                    </x-nav-link>
+                        {{view('welcome')}}
                     @endif
                 </div>
             </div>

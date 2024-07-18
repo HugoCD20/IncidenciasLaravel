@@ -17,6 +17,10 @@
                 border: 1px solid white;
                 width: 80%;
             }
+            .boton:hover{
+                background-color: white;
+                color: black;
+            }
             table {
             border-collapse: collapse;
             color: white;
@@ -61,6 +65,16 @@
             .boton-1:hover,.boton-2:hover{
                 background-color: white;
                 color: black;
+            }
+            .titulos{
+                font-size: medium;
+                color: white;
+                font-weight: bold;
+            }
+            .contenedor-2{
+                padding: 10px;
+                color: white;
+                width: 80%;
             }
         </style>
         <!-- Fonts -->

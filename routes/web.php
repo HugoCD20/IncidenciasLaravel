@@ -7,6 +7,7 @@ use App\Http\Controllers\FinalizarController;
 use App\Http\Controllers\IncidenciasController;
 use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PruebasController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\tareascontroller;
 use App\Http\Controllers\verTarea;
@@ -59,5 +60,7 @@ Route::resource('Soluciones',TareaController::class)
 Route::resource('Finalizar',FinalizarController::class)
 ->only(['store']);
 
+Route::resource('Pruebas',PruebasController::class)
+    ->only(['show']);
     
 require __DIR__.'/auth.php';

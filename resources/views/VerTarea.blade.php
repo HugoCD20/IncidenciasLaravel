@@ -51,6 +51,7 @@
                         </tbody>
                     </table>
                 @endif
+                <a href="{{route('Pruebas.show',$incidencia->id)}}" class="centrar"><button class="boton" style="width:30%;margin-top:15px;">Pruebas</button></a>
 
             </div>
         </div>
