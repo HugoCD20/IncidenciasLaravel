@@ -27,5 +27,8 @@ class Incidencias extends Model
     public function Tarea():HasMany{
         return $this->hasMany(Tarea::class);
     }
+    public function prueba(): HasMany{
+        return $this->hasMany(Pruebas::class);
+    }
     
 }

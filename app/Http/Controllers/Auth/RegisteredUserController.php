@@ -46,7 +46,13 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        $usuario=Auth::user();
 
-        return redirect(route('Incidencia.index'));
+        if($usuario->role=="Tecnico"){
+            return redirect()->route('Tareas.show',$usuario->id);
+        }else{
+            return redirect(route('Incidencia.index'));
+        }
+
     }
 }

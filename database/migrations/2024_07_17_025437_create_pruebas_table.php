@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('pruebas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('incidencia_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('resultados');
+            $table->string('estado');
             $table->timestamps();
         });
     }

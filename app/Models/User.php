@@ -56,4 +56,7 @@ class User extends Authenticatable
     public function Tarea(): HasMany{
         return $this->hasMany(Tarea::class);
     }
+    public function prueba(): HasMany{
+        return $this->hasMany(Pruebas::class);
+    }
 }

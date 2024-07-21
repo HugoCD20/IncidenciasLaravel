@@ -43,24 +43,24 @@ Route::resource('asignar',asignacion::class)
     ->middleware(['auth','verified']);
 
 Route::resource('Asignacion', AsignacionController::class)
-    ->only(['store']);
+    ->only(['store'])->middleware(['auth','verified']);
 
 Route::resource('Tareas',mostrarTareas::class)
-    ->only(['show']);
+    ->only(['show'])->middleware(['auth','verified']);
 
 Route::resource('Tarea',verTarea::class)
-    ->only(['show']);
+    ->only(['show'])->middleware(['auth','verified']);
 
 Route::resource('Solucion',tareascontroller::class)
-    ->only(['show']);
+    ->only(['show'])->middleware(['auth','verified']);
 
 Route::resource('Soluciones',TareaController::class)
-    ->only(['store']);
+    ->only(['store'])->middleware(['auth','verified']);
 
 Route::resource('Finalizar',FinalizarController::class)
-->only(['store']);
+->only(['store'])->middleware(['auth','verified']);
 
 Route::resource('Pruebas',PruebasController::class)
-    ->only(['show']);
+    ->only(['show','store'])->middleware(['auth','verified']);
     
 require __DIR__.'/auth.php';

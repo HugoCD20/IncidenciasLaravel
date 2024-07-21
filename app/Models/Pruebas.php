@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Pruebas extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'incidencia_id',
+        'user_id',
+        'resultados',
+        'estado',
+    ] ;
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function incidencia(){
+        return $this->belongsTo(Incidencias::class);
+    }
 }

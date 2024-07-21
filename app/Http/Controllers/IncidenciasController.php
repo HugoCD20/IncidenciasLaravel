@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Pruebas;
 use Illuminate\View\View;
 use App\Models\Incidencias;
 use App\Models\Tarea;
@@ -52,8 +53,10 @@ class IncidenciasController extends Controller
                        ->where('tareas.incidencia_id', $incidencia->id)
                        ->select('tareas.*', 'users.name as usuario_nombre')
                        ->get();
+        
+        $pruebas=Pruebas::where('incidencia_id', $incidencia->id)->get();
     
-        return view('mostrar', compact('incidencia', 'tareas'));
+        return view('mostrar', compact('incidencia', 'tareas','pruebas'));
     }
     
 
