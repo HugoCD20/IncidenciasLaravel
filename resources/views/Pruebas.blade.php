@@ -10,7 +10,7 @@
                 <h3 class="titulos">Descripción:</h3>
                 <p style="margin-bottom: 20px;">esta es una descripcion</p>
                 <h4 class="titulos">Resultados de pruebas:</h4>
-                <form action="{{route('Pruebas.store')}}" method="POST">
+                <form id="pasar-form" action="{{route('Pruebas.store')}}" method="POST">
                     @csrf
                     <div class="mt-4" style=" padding-bottom:15px;border:1px solid white; border-style:none; border-bottom-color: white;border-bottom-style: dotted;">
                         <x-input-label for="resultados"/>
@@ -42,9 +42,24 @@
                     </div>
                     <div class="botones" style="display:flex;flex-direction:row; justify-content: space-evenly; width:100%;">
                         <button class="boton" style="width:25%;" name="accion" id="accion" value="cancelar">Cancelar</button>
-                        <button class="boton" style="width:25%;" name="accion" id="accion" value="no pasa">No pasa</button>
-                        <button class="boton" style="width:25%;" name="accion" id="accion" value="pasa">Pasa</button>
+                        <button class="boton" style="width:25%;" name="accion" id="accion" value="no pasa" onclick="return confirNopasa(event)">No pasa</button>
+                        <button class="boton" style="width:25%;" name="accion" id="accion" value="pasa" onclick="return confirmpaso(event)">Pasa</button>
                     </div>
+                    <script>
+                        function confirmpaso(event) {
+                            if (!confirm('¿Estás seguro de que deseas pasar esta prueba? Esta acción no se puede deshacer y la tarea estará terminada.')) { 
+                                event.preventDefault();
+                                return false;
+                            }
+                        }
+
+                        function confirNopasa(event) {
+                            if (!confirm('¿Estás seguro de que deseas no pasar? Esta acción no se puede deshacer.')) { 
+                                event.preventDefault();
+                                return false;
+                            }
+                        }
+                    </script>
                 </form>
             </div>
         </div>

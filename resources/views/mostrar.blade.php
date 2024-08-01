@@ -58,7 +58,9 @@
                         </div>
                 </div>                
                 @endforeach
-                <h2 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal; margin-top:50px;">Pruebas</h2>
+                @if (isset($pruebas) && !$pruebas->isEmpty())
+                <h2 style="font-family: 'Arial', serif; font-weight: 700; font-size: 35px;color: white;font-style: normal; margin-top:50px;">Pruebas:</h2>
+                @endif
                 @foreach ($pruebas as $prueba)
                 <div class="p-6 flex space-x-2" style="border: 1px solid white;border-style: none;border-bottom-color: white;border-bottom-style: dashed;width:100%;">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 -scale-x-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

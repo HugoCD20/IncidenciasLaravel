@@ -14,11 +14,14 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @if (isset((Auth::user()->role)))
                         @if(Auth::user()->role != 'Tecnico')
-                        <x-nav-link :href="route('Incidencia.index')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('Incidencia.index')" :active="request()->routeIs('Incidencia.index')">
                             {{ __('Incidencias') }}
                         </x-nav-link>
                         <x-nav-link :href="route('incidencia')" :active="request()->routeIs('incidencia')">
                             {{ __('Agregar incidencia') }}
+                        </x-nav-link>
+                        <x-nav-link :href="route('Registro.index')" :active="request()->routeIs('Registro.index')">
+                            {{ __('Registro') }}
                         </x-nav-link>
                         @else
                         <x-nav-link href="{{route('Tareas.show',Auth::user()->id)}}" :active="request()->routeIs('Tareas.show')">

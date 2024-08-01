@@ -5,11 +5,13 @@ use App\Http\Controllers\asignacion;
 use App\Http\Controllers\AsignacionController;
 use App\Http\Controllers\FinalizarController;
 use App\Http\Controllers\IncidenciasController;
+use App\Http\Controllers\IncidenciasTotales;
 use App\Http\Controllers\mostrarTareas;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebasController;
 use App\Http\Controllers\TareaController;
 use App\Http\Controllers\tareascontroller;
+use App\Http\Controllers\verPruebas;
 use App\Http\Controllers\verTarea;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +63,11 @@ Route::resource('Finalizar',FinalizarController::class)
 ->only(['store'])->middleware(['auth','verified']);
 
 Route::resource('Pruebas',PruebasController::class)
-    ->only(['show','store'])->middleware(['auth','verified']);
+    ->only(['show','store','edit'])->middleware(['auth','verified']);
+Route::resource('verPruebas',verPruebas::class)
+->only(['show'])->middleware(['auth','verified']);
     
+Route::resource('Registro',IncidenciasTotales::class)
+->only(['index'])->middleware(['auth','verified']);
+
 require __DIR__.'/auth.php';

@@ -62,15 +62,28 @@ class PruebasController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($id):RedirectResponse
     {
+        $tareas = Tarea::where("incidencia_id", $id)->get();
+        
+        if ($tareas->isEmpty()) {
+            return redirect(route("Tarea.show", $id));
+        } else {       
+            $count=0;
+            foreach($tareas as $tarea){
+                if($tarea->estado != 'finalizado'){
+                    $count++;
+                }
 
-        $datos = Tarea::join('users', 'tareas.user_id', '=', 'users.id')
-                       ->where('tareas.incidencia_id', $id)
-                       ->select('tareas.*', 'users.name as usuario_nombre')
-                       ->get();
-        return view("Pruebas",compact("datos"));
+            }
+            if($count==0){
+                return redirect(route("verPruebas.show", $id));
+            }else{
+                return redirect(route("Tarea.show", $id));
+            }              
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
